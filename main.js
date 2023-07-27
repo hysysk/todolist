@@ -1,4 +1,4 @@
-window.onload = () => {
+window.addEventListener("DOMContentLoaded", () => {
   const input = document.getElementById('input');
   const button = document.getElementById('submit');
   const todos = document.getElementById('todos');
@@ -55,4 +55,4 @@ window.onload = () => {
     appendItem(checkbox, value);
     saveList();
   });
-}
+});
