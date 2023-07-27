@@ -1,0 +1,31 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  padding: 1rem;
+}
+
+input[type="text"] {
+  width: 200px;
+  height: 40px;
+  font-size: 1rem;
+}
+
+input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+button {
+  width: 120px;
+  height: 40px;
+  margin-left: 0.5rem;
+}
+
+.todo {
+  display: block;
+  margin: 1rem 0;
+}
