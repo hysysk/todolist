@@ -8,7 +8,14 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <input type="text" id="input" /><button id="submit">登録</button>
-    <div id="todos"></div>
+    <main>
+      <h1>TODO List</h1>
+      <div id="newtask">
+        <input type="text" id="input" placeholder="TODOを入力してください" /><button id="submit" disabled>追加する</button>
+      </div>
+      <div id="todos">
+        <p id="empty-message">TODOはありません</p>
+      </div>
+    </main>
   </body>
 </html>

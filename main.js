@@ -23,13 +23,38 @@ window.addEventListener("DOMContentLoaded", () => {
     saveList();
   }
 
+  const checkEmpty = () => {
+    const todolist = document.querySelectorAll('.todo');
+    const empty = document.getElementById('empty-message');
+    if (todolist.length === 0) {
+      empty.style.display = 'flex';
+    } else {
+      empty.style.display = 'none';
+    }
+  }
+
   const appendItem = (checkbox, value) => {
+    const div = document.createElement('div');
     const text = document.createTextNode(value);
     const label = document.createElement('label');
+    const button = document.createElement('button');
+    button.textContent = '×';
+    button.addEventListener('click', () => {
+      if (confirm(`「${value}」を削除しますか？`)) {
+        div.remove();
+        saveList();
+        checkEmpty();
+      }
+    });
+
+    div.classList.add('todo-wrapper');
+
     label.classList.add('todo');
     label.appendChild(checkbox);
     label.appendChild(text);
-    todos.appendChild(label);
+    div.appendChild(label);
+    div.appendChild(button);
+    todos.appendChild(div);
   }
 
   let savedList = localStorage.getItem("todos");
@@ -46,13 +71,27 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  input.addEventListener('input', () => {
+    if (input.value) {
+      button.disabled = false;
+    } else {
+      button.disabled = true;
+    }
+  });
+
   button.addEventListener('click', () => {
     const checkbox = document.createElement('input');
     const value = input.value;
     checkbox.setAttribute('type', 'checkbox');
     checkbox.addEventListener('change', checkboxChangeHandler);
 
+    input.value = '';
+    button.disabled = true;
+
     appendItem(checkbox, value);
     saveList();
+    checkEmpty();
   });
+
+  checkEmpty();
 });

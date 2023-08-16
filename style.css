@@ -6,14 +6,22 @@
 
 body {
   font-family: sans-serif;
-  padding: 1rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 input[type="text"] {
-  width: 200px;
   height: 40px;
   font-size: 1rem;
   padding: 0.25rem 0.5rem;
+  display: block;
+  line-height: 1.5;
 }
 
 input[type="checkbox"] {
@@ -21,14 +29,74 @@ input[type="checkbox"] {
 }
 
 button {
-  width: 120px;
+  display: block;
   height: 40px;
   margin-left: 0.5rem;
   cursor: pointer;
   font-size: 1rem;
 }
 
+button:disabled {
+  cursor: not-allowed;
+}
+
+#newtask {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+#todos {
+  margin-top: 1rem;
+  border: 1px solid #eee;
+}
+
+#empty-message {
+  color: #333;
+  text-align: center;
+  margin: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.todo-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo-wrapper:hover {
+  background-color: #eee;
+}
+
+.todo-wrapper button {
+  background: none;
+  border: none;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.todo-wrapper button:hover {
+  background-color: #000;
+  color: #fff;
+}
+
 .todo {
-  display: block;
-  margin: 1rem 0;
+  display: flex;
+  height: 3rem;
+  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
+  flex-grow: 2;
+  padding: 0 1rem;
+}
+
+.todo-wrapper+.todo-wrapper {
+  border-top: 1px solid #eee;
 }
